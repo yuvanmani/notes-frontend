@@ -1,9 +1,32 @@
 import { createBrowserRouter, RouterProvider } from "react-router"
+import Layout from "./wrappers/Layout"
+import HomePage from "./pages/HomePage"
+import RegisterPage from "./pages/RegisterPage"
+import LoginPage from "./pages/LoginPage"
+import VerifyPage from "./pages/VerifyPage"
 
 const routes = [
   {
     path: "/",
-    element: <h1 className="text-3xl text-red-600 font-bold m-5">M - Notes</h1>
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />
+      },
+      {
+        path: "register",
+        element: <RegisterPage />
+      },
+      {
+        path: "login",
+        element: <LoginPage />
+      },
+      {
+        path: "verify",
+        element: <VerifyPage />
+      }
+    ]
   }
 ]
 
