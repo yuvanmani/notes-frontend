@@ -4,6 +4,13 @@ import HomePage from "./pages/HomePage"
 import RegisterPage from "./pages/RegisterPage"
 import LoginPage from "./pages/LoginPage"
 import VerifyPage from "./pages/VerifyPage"
+import Dashboard from "./wrappers/Dashboard"
+import NewNote from "./components/NewNote"
+import Logout from "./components/Logout"
+import ViewOneNote from "./components/ViewOneNote"
+import EditNote from "./components/EditNote"
+import DeleteNote from "./components/DeleteNote"
+import UserDashboardWrapper from "./wrappers/UserDashboardWrapper"
 
 const routes = [
   {
@@ -25,6 +32,36 @@ const routes = [
       {
         path: "verify",
         element: <VerifyPage />
+      }
+    ]
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        index: true,
+        element: <UserDashboardWrapper />
+      },
+      {
+        path: "create",
+        element: <NewNote />
+      },
+      {
+        path: "logout",
+        element: <Logout />
+      },
+      {
+        path: "viewonenote/:noteId",
+        element: <ViewOneNote />
+      },
+      {
+        path: "editnote/:noteId",
+        element: <EditNote />
+      },
+      {
+        path: "deletenote/:noteId",
+        element: <DeleteNote />
       }
     ]
   }

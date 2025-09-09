@@ -18,7 +18,7 @@ const LoginPage = () => {
           <li className="text-gray-600 text-sm font-medium mb-3">At least one number (0-9)</li>
         </ul>
         <button type="submit" className="bg-gray-600 text-white font-semibold p-2 rounded hover:bg-gray-700 mb-3">Login</button>
-        <p className="text-gray-700 text-md font-semibold mb-5">New to M - Notes? <Link to="/register">
+        <p className="text-cyan-500 text-md font-bold mb-5">New to M - Notes ? <Link to="/register">
           <span className="text-orange-600 text-md font-bold">Register here</span></Link></p>
       </form>
     </div>
