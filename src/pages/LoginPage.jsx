@@ -31,7 +31,7 @@ const LoginPage = () => {
         dispatch(setEmail(""));
         dispatch(setPassword(""));
 
-        // navigate to the user dashboard
+        // navigate the user to dashboard
         navigate("/dashboard");
       })
       .catch((error) => {

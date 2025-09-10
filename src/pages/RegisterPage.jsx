@@ -34,9 +34,7 @@ const RegisterPage = () => {
         dispatch(setPassword(""));
 
         // navigate to verify page
-        setTimeout(() => {
-          navigate("/verify");
-        }, 500);
+        navigate("/verify");
 
       })
       .catch((error) => {

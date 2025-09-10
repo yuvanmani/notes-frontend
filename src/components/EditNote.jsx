@@ -31,9 +31,7 @@ const EditNote = () => {
         dispatch(setContent(""));
 
         // navigate to note page
-        setTimeout(() => {
-          navigate(-1);
-        }, 500)
+        navigate(-1);
       })
       .catch((error) => {
         toast.error(error.response.data.message);

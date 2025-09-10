@@ -18,9 +18,7 @@ const ViewOneNote = () => {
           toast.success(response.data.message);
 
           // navigate the user to the all notes page
-          setTimeout(() => {
-            navigate("/dashboard");
-          }, 500);
+          navigate("/dashboard");
         })
         .catch((error) => {
           toast.error(error.response.data.message);

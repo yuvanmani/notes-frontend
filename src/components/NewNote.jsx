@@ -23,9 +23,7 @@ const NewNote = () => {
         dispatch(setContent(""));
 
         // navigate the user to all notes page
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 500);
+        navigate("/dashboard");
       })
       .catch((error) => {
         toast.error(error.response.data.message);
