@@ -32,9 +32,7 @@ const LoginPage = () => {
         dispatch(setPassword(""));
 
         // navigate to the user dashboard
-        setTimeout(() => {
-          navigate("/dashboard");
-        })
+        navigate("/dashboard");
       })
       .catch((error) => {
         toast.error(error.response.data.message);

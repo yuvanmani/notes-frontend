@@ -13,9 +13,7 @@ const Logout = () => {
         toast.success(response.data.message);
 
         // navigate to login page
-        setTimeout(() => {
-          navigate("/login");
-        }, 500)
+        navigate("/login");
       })
       .catch((error) => {
         toast.error(error.response.data.message);
