@@ -9,13 +9,20 @@ import NewNote from "./components/NewNote"
 import Logout from "./components/Logout"
 import ViewOneNote from "./components/ViewOneNote"
 import EditNote from "./components/EditNote"
-import DeleteNote from "./components/DeleteNote"
-import UserDashboardWrapper from "./wrappers/UserDashboardWrapper"
+import { Provider } from "react-redux"
+import store from "./redux/app/store"
+import ToastProvider from "./components/ToastProvider"
+import authLoader from "./loaders/unit/authLoader"
+import ViewAllNote from "./components/ViewAllNote"
+import noteLoader from "./loaders/unit/NoteLoader"
+import oneNoteLoader from "./loaders/unit/oneNoteLoader"
 
 const routes = [
   {
     path: "/",
     element: <Layout />,
+    loader: authLoader,
+    hydrateFallbackElement: <div>Loading M - Notes...</div>,
     children: [
       {
         index: true,
@@ -38,10 +45,14 @@ const routes = [
   {
     path: "/dashboard",
     element: <Dashboard />,
+    loader: authLoader,
+    hydrateFallbackElement: <div className="m-5">Loading Dashboard...</div>,
     children: [
       {
         index: true,
-        element: <UserDashboardWrapper />
+        element: <ViewAllNote />,
+        loader: noteLoader,
+        hydrateFallbackElement: <div className="relative top-20">Loading Dashboard...</div>
       },
       {
         path: "create",
@@ -53,15 +64,15 @@ const routes = [
       },
       {
         path: "viewonenote/:noteId",
-        element: <ViewOneNote />
+        element: <ViewOneNote />,
+        loader: oneNoteLoader,
+        hydrateFallbackElement: <div>Loading Note...</div>
       },
       {
         path: "editnote/:noteId",
-        element: <EditNote />
-      },
-      {
-        path: "deletenote/:noteId",
-        element: <DeleteNote />
+        element: <EditNote />,
+        loader: oneNoteLoader,
+        hydrateFallbackElement: <div>Loading Note...</div>
       }
     ]
   }
@@ -79,12 +90,16 @@ const router = createBrowserRouter(routes, {
 
 const App = () => {
   return (
-    <RouterProvider
-      router={router}
-      future={{
-        v7_startTransition: true,
-      }}
-    />
+    <>
+      <Provider store={store}>
+        <ToastProvider />
+        <RouterProvider
+          router={router}
+          future={{
+            v7_startTransition: true,
+          }} />
+      </Provider>
+    </>
   )
 }
 
